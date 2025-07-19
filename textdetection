@@ -1,0 +1,20 @@
+import pytesseract
+import cv2
+import os
+
+# Only for Windows: Set the Tesseract path (change if needed)
+pytesseract.pytesseract.tesseract_cmd = r"C:\Users\pc\Desktop\project\tesseract.exe"
+
+# Load the image
+image_path = "sample_image.jpg"
+img = cv2.imread(image_path)
+
+# Convert to RGB (pytesseract prefers RGB)
+img_rgb = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
+
+# Extract text
+extracted_text = pytesseract.image_to_string(img_rgb)
+
+# Print result
+print("🔍 Extracted Text:\n")
+print(extracted_text)
